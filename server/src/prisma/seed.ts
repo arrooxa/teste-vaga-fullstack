@@ -4,15 +4,15 @@ import { getFormattedCSV } from "../utils/csv-format";
 
 const prisma = new PrismaClient();
 
-async function main() {
-    const historyInstance = prisma.history;
+async function main(): Promise<void> {
+    const recordsInstance = prisma.records;
 
-    if ((await historyInstance.count()) !== 0) return;
+    if ((await recordsInstance.count()) !== 0) return;
 
     const formattedCSV = await getFormattedCSV();
 
     for (let data of formattedCSV) {
-        await historyInstance.create({
+        await recordsInstance.create({
             data,
         });
     }

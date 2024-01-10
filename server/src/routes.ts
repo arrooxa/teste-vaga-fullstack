@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { getHistories } from "./controller/history";
+import { getRecords } from "./controller/records";
 
 const routes = Router();
 
-routes.get("/history", getHistories);
+routes.get("/records", getRecords);
 
 export default routes;

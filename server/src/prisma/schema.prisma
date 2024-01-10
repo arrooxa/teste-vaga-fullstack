@@ -8,7 +8,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model History {
+model Records {
   id           Int      @id @default(autoincrement())
   nrInst       Int
   nrAgencia    Int
@@ -37,4 +37,5 @@ model History {
   vlPresta     String
   idSituac     String
   idSitVen     String
+  constVal     Boolean
 }

@@ -1,4 +1,4 @@
-export interface HistoryDTO {
+export interface RecordsDTO {
     nrInst: number;
     nrAgencia: number;
     cdClient: number;
@@ -26,4 +26,5 @@ export interface HistoryDTO {
     vlAtual: string;
     idSituac: string;
     idSitVen: string;
+    constVal: boolean;
 }
