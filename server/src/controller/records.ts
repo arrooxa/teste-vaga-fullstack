@@ -3,9 +3,9 @@ import { Request, Response } from "express";
 import prisma from "../prisma";
 
 export async function getRecords(req: Request, res: Response) {
-    const { take, skip } = req.query;
+    const { take, page } = req.query;
 
-    const records = await prisma.records.findMany({ take: Number(take), skip: Number(skip) });
+    const records = await prisma.records.findMany({ take: Number(take), skip: Number(Number(take) * (Number(page) - 1)) });
 
     const recordsCount = await prisma.records.count();
 
