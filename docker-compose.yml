@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   db:
-    container_name: postgres_container
+    container_name: postgres
     image: postgres
     restart: always
     environment:
@@ -10,8 +10,11 @@ services:
       POSTGRES_DB: test_db
     ports:
       - "5432:5432"
+    networks:
+      - connection
+
   pgadmin:
-    container_name: pgadmin4_container
+    container_name: pgadmin
     image: dpage/pgadmin4
     restart: always
     environment:
@@ -19,3 +22,30 @@ services:
       PGADMIN_DEFAULT_PASSWORD: root
     ports:
       - "5050:80"
+    networks:
+      - connection
+
+  server:
+    container_name: server
+    build: ./server
+    depends_on:
+      - db
+    ports:
+      - "3001:3001"
+    environment:
+      - DATABASE_URL=postgresql://root:pass123@db:5432/test_db
+    networks:
+      - connection
+
+  web:
+    container_name: web
+    build: ./web
+    depends_on:
+      - server
+    ports:
+      - "3000:3000"
+    networks:
+      - connection
+
+networks:
+  connection:

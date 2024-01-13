@@ -5,7 +5,7 @@ export async function getTableInfo(
   take: number,
   page: number
 ): Promise<RecordsResponse> {
-  const fetchData = await axios.get("http://localhost:3001/records", {
+  const fetchData = await axios.get("http://server:3001/records", {
     params: {
       take,
       page,
