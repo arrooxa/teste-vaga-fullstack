@@ -28,6 +28,7 @@ services:
   server:
     container_name: server
     build: ./server
+    restart: on-failure
     depends_on:
       - db
     ports:
