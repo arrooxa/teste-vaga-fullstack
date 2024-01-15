@@ -4,27 +4,60 @@
 
 - [How to run](#how-to-run)
 - [Links](#links)
+- [Tecnologias](#tech)
 - [Exercicio](#exercise)
 
 <a name="how-to-run"></a>
 
 # How to run
 
-## Rodando o projeto
+## Rodando o projeto pela primeira vez
 
 Esse projeto é totalmente dockerizado para a facilitação na execução dos processos, tendo em vista que há problemas quando se trata de máquinas diferentes, os container podem ser executados da seguinte forma:
+
+**OBS**: Certifique-se que o seu terminal se encontra no diretório raiz.
 
 ```bash
 docker-compose up -d
 ```
 
-**OBS**: Certifique-se que o seu terminal se encontra no diretório raiz.
+Ao rodar esse comando, você terá executado o banco de dados (PostgreSQL) e a aplicação pgAdmin para visualização dos registros. O próximo passo é executar o back-end para popular o banco de dados, para isso execute os seguintes comandos:
+
+**OBS:** Certifique-se que o seu terminal se encontra no diretório server.
+
+```bash
+npm run boostrap
+```
+
+Aguarde os dados serem populados no banco de dados e o back-end será inicializado. Após a inicialização do back-end, temos a inicialização do front-end que consiste em:
+
+**OBS:** Certifique-se que o seu terminal se encontra no diretório web.
+
+```bash
+npm run bootstrap
+```
+
+## Rodando pelas demais vezes
+
+Para inicialização do projeto nas demais vezes é só executar os próximos comandos.
+
+### No diretório raíz:
+
+```bash
+docker-compose up -d
+```
+
+## No diretório server e web:
+
+```bash
+npm run dev
+```
 
 <a name="links"></a>
 
 # Links
 
-Após a inicialização dos projetos via docker-compose, as aplicações estarão disponíveis nos seguintes URLs:
+Após a inicialização dos projetos, as aplicações estarão disponíveis nos seguintes URLs:
 
 ## Front-end (Web)
 
@@ -37,6 +70,28 @@ Após a inicialização dos projetos via docker-compose, as aplicações estarã
 ## pgAdmin
 
 [http://localhost:5050](http://localhost:5050)
+
+<a name="tech"></a>
+
+# Tecnologias
+
+Abaixo deixo listada as tecnologias utilizadas nas vertentes do projeto:
+
+## Back-end
+
+- Typescript
+- Express (API)
+- Prisma (ORM)
+- Joi (Validação de endpoints)
+- Csv-parser
+
+## Front-end
+
+- Typescript
+- Next.js (SSR)
+- Tailwind (Estilização)
+- React-query (Fetch data)
+- Zustand (Gerenciamento de estados)
 
 <a name="exercise"></a>
 
