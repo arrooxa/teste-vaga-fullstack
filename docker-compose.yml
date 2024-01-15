@@ -45,6 +45,8 @@ services:
       - server
     ports:
       - "3000:3000"
+    environment:
+      - API_URL=http://db:3001
     networks:
       - connection
 

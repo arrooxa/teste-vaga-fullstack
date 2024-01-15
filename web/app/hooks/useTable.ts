@@ -1,7 +1,7 @@
 import { RecordsDTO } from "@app/interfaces/records";
+import { TableColumn } from "@app/interfaces/table";
 import { getTableInfo } from "@app/services/getTableInfo";
 import { columns } from "@app/utils/table-columns";
-import { GridColDef } from "@mui/x-data-grid";
 import { create } from "zustand";
 
 interface TableState {
@@ -10,7 +10,7 @@ interface TableState {
   totalPages: number;
   recordsCount: number;
   tableData: RecordsDTO[];
-  columns: GridColDef[];
+  columns: TableColumn[];
   setTableData: (page: number) => Promise<void>;
 }
 

@@ -1,5 +1,5 @@
 import { RecordsDTO } from "@app/interfaces/records";
-import { GridColDef } from "@mui/x-data-grid";
+import { TableColumn } from "@app/interfaces/table";
 
 const keysOfRecordsDTO: (keyof RecordsDTO)[] = [
   "id",
@@ -33,8 +33,8 @@ const keysOfRecordsDTO: (keyof RecordsDTO)[] = [
   "constVal",
 ];
 
-export const columns: GridColDef[] = keysOfRecordsDTO.map((key) => ({
+export const columns: TableColumn[] = keysOfRecordsDTO.map((key) => ({
   field: key,
-  headerName: key.toString(),
+  name: key.toString(),
   width: 150,
 }));
