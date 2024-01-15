@@ -13,7 +13,7 @@
     "joi": "^17.11.0"
   },
   "scripts": {
-    "bootstrap": "prisma db push && prisma db seed && tsnd src/server.ts",
+    "bootstrap": "npm install && prisma db push && prisma db seed && tsnd src/server.ts",
     "dev": "tsnd src/server.ts",
     "build": "tsc"
   },
