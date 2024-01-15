@@ -8,10 +8,10 @@ services:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: pass123
       POSTGRES_DB: test_db
+    volumes:
+      - pgdata:/var/lib/postgresql/data
     ports:
       - "5432:5432"
-    networks:
-      - connection
 
   pgadmin:
     container_name: pgadmin
@@ -22,33 +22,6 @@ services:
       PGADMIN_DEFAULT_PASSWORD: root
     ports:
       - "5050:80"
-    networks:
-      - connection
 
-  server:
-    container_name: server
-    build: ./server
-    restart: on-failure
-    depends_on:
-      - db
-    ports:
-      - "3001:3001"
-    environment:
-      - DATABASE_URL=postgresql://root:pass123@db:5432/test_db
-    networks:
-      - connection
-
-  web:
-    container_name: web
-    build: ./web
-    depends_on:
-      - server
-    ports:
-      - "3000:3000"
-    environment:
-      - API_URL=http://db:3001
-    networks:
-      - connection
-
-networks:
-  connection:
+volumes:
+  pgdata:

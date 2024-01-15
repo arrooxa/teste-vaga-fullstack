@@ -39,7 +39,7 @@ const Table: React.FC = () => {
               <tr>
                 {columns.map((column, index) => (
                   <th scope="col" className="px-6 py-3" key={index}>
-                    {column.headerName}
+                    {column.name}
                   </th>
                 ))}
               </tr>
